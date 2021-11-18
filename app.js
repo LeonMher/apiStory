@@ -121,7 +121,7 @@ let server = http.createServer((req, res) => {
     }
 })
 
-server.listen(5000)
+
 
 
 
@@ -170,9 +170,9 @@ fs.appendFileSync('./letters/letterFromJohn', `I'm flying from ${covidCountry} a
 
 
 
+const port = process.env.PORT || 5000
 
-
-
+server.listen(port)
 
 
 
