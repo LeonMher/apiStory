@@ -5,12 +5,18 @@ const covid = require('./covid')
 const quotes = require('./quotes')
 const http = require('http')
 const town = require('./town')
+const hour = require('./localTime')
+
+
+
+
 
 let countryCapital = town().capital
-let countryName = town().name
+let chicago = town().chicago
 
-console.log(countryName)
-console.log(countryCapital)
+
+
+
 
 
 let server = http.createServer((req, res) => {
@@ -62,7 +68,7 @@ let server = http.createServer((req, res) => {
 
 
         .secondStory{
-            background: url('https://images.unsplash.com/photo-1601526504956-83f02f6b212c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+            background: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1244&q=80');
             background-size:cover;
             font-size:25px;
             color:white;
@@ -105,7 +111,8 @@ let server = http.createServer((req, res) => {
             <div class='cardNYC'>
             <h1>Another Story</h1>
 
-            <p>I live in <span> ${countryName}</span> </p>
+            <p>I live in <span> ${chicago}</span> </p>
+            <p>${data} </p>
             </div>
         
 
@@ -119,8 +126,23 @@ server.listen(5000)
 
 
 const quote = quotes().quote
+const theTimes = hour().hour
+const digit = hour().digit
 
-console.log(quote)
+let data = ""
+
+if (digit <= 9) {
+    data = +digit + " I'm having breakfast" + theTimes
+} else if (digit <= 11) {
+    data = "I'm having lunch because it's " + theTimes
+} else if (digit <= 16) {
+    data = "I'm working now because it's " + theTimes
+}
+else if (digit <= 17) {
+    data = "I'm almost done with my work because it's  " + theTimes
+}
+console.log(data)
+
 
 
 
@@ -140,7 +162,7 @@ fs.writeFileSync('./letters/letterFromJohn', `Hello, my name is ${firstChar} `)
 
 fs.appendFileSync('./letters/letterFromJohn', `I'm currently in ${cityName} and the temperature is ${theTemp} `);
 fs.appendFileSync('./letters/letterFromJohn', `I'm flying from ${covidCountry} and the COVID cases there are pretty high, like ${covidCases} confirmed cases and ${covidDeathes} deathes. `)
-console.log(fs.readFileSync('./letters/letterFromJohn', "utf8"))
+
 
 
 

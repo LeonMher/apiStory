@@ -1,19 +1,26 @@
 const syncRequest = require('sync-request')
 
 
-module.exports = function getCountry() {
+
+
+module.exports = function getLCtime() {
+
     try {
-        url = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-cities-demographics&q=chicago'
+        url = 'http://worldtimeapi.org/api/timezone/America/Chicago'
         response = syncRequest('GET', url)
         // convert response body to a string
         body_string = response.body.toString("utf8")
         // convert the response body string to JSON
         body_json = JSON.parse(body_string)
 
-        let chicago = body_json.records[0].fields.city
 
 
-        return { chicago }
+        let time = body_json.datetime
+        let hour = time.substr(11, 5);
+        let digit = time.substr(11, 2)
+
+
+        return { hour, digit }
 
 
     } catch (e) {
