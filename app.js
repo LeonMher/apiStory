@@ -20,7 +20,7 @@ let chicago = town().chicago
 
 
 let server = http.createServer((req, res) => {
-    if (req.url === 'https://apistorytelling.herokuapp.com') {
+    if (req.url === '/') {
         res.end(`
         
         <style>
