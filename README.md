@@ -6,6 +6,6 @@ In this world of real time data that is being updated every SECOND I wrote a sto
 and the meaning of the story! So, reading the SAME story you're actually reading a NEW story with a NEW meaning. Hope that makes sense and enjoy it ;) 
 
 
-Here's the link - https://tellmeastoryapi.herokuapp.com/ 
+Here's the link - https://anewstorytellingapp.herokuapp.com/
 
 You're welcome =)
